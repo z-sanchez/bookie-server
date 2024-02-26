@@ -3,12 +3,12 @@ import dotenv from "dotenv";
 dotenv.config();
 import cors from "cors";
 import express from "express";
-import products from "./products";
-import { Product } from "./types/product";
+import products from "./products/products.json";
+import { Product } from "./types/Product";
 
 const app = express();
 
-const books: Product[] = products;
+const books: Product[] = products.books;
 
 app.use(
   cors({
@@ -19,7 +19,7 @@ app.use(
 app.use(express.json()); // parse json bodies in the request object
 
 app.get("/", async (req, res) => {
-  res.status(200).send("<h1>What's up world</h1>");
+  res.status(200).send(`<h1>${books[0].name}</h1>`);
 });
 
 // Listen on pc port
