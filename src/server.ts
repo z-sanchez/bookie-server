@@ -3,8 +3,12 @@ import dotenv from "dotenv";
 dotenv.config();
 import cors from "cors";
 import express from "express";
+import products from "./products";
+import { Product } from "./types/product";
 
 const app = express();
+
+const books: Product[] = products;
 
 app.use(
   cors({
