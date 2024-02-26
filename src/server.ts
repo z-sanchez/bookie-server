@@ -15,7 +15,7 @@ app.use(
 app.use(express.json()); // parse json bodies in the request object
 
 app.get("/", async (req, res) => {
-  res.status(200).send("<h1>Hello World</h1>");
+  res.status(200).send("<h1>What's up world</h1>");
 });
 
 // Listen on pc port
