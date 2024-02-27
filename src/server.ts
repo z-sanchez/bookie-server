@@ -20,7 +20,7 @@ app.use(express.json());
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers: bookResovler,
+  resolvers: [bookResovler],
 });
 
 const { url } = await startStandaloneServer(server, {
