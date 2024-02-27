@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
-    "module": "NodeNext",
-    "target": "ES2020",
-    "moduleResolution": "NodeNext",
-    "sourceMap": true,
+    "rootDirs": ["src"],
     "outDir": "dist",
-    "noImplicitAny": true,
+    "lib": ["es2020"],
+    "target": "es2020",
+    "module": "esnext",
+    "moduleResolution": "node",
     "esModuleInterop": true,
+    "types": ["node"],
     "resolveJsonModule": true
-  },
-  "include": ["src/**/*"]
+  }
 }

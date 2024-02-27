@@ -3,7 +3,7 @@
     {
       "id": "001",
       "author": "J.K. Rowling",
-      "name": "Harry Potter and the Sorcerer's Stone",
+      "title": "Harry Potter and the Sorcerer's Stone",
       "description": "The first book in the Harry Potter series, introducing the magical world of Hogwarts.",
       "price": 15.99,
       "quantityAvailable": 100,
@@ -13,7 +13,7 @@
     {
       "id": "002",
       "author": "George Orwell",
-      "name": "1984",
+      "title": "1984",
       "description": "A dystopian novel exploring the dangers of totalitarianism and surveillance.",
       "price": 12.49,
       "quantityAvailable": 50,
@@ -23,7 +23,7 @@
     {
       "id": "003",
       "author": "Harper Lee",
-      "name": "To Kill a Mockingbird",
+      "title": "To Kill a Mockingbird",
       "description": "A classic novel addressing racial injustice in the American South during the 1930s.",
       "price": 9.99,
       "quantityAvailable": 75,
@@ -33,7 +33,7 @@
     {
       "id": "004",
       "author": "Frank Herbert",
-      "name": "Dune",
+      "title": "Dune",
       "description": "Set on the desert planet Arrakis, Dune is the story of Paul Atreides—who would become known as Muad'Dib—and of a great family's ambition to bring to fruition humankind's most ancient and unattainable dream.",
       "price": 14.99,
       "quantityAvailable": 32,
