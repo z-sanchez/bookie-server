@@ -16,15 +16,7 @@ app.use(
   })
 );
 
-app.use(express.json()); // parse json bodies in the request object
-
-// app.get("/", async (req, res) => {
-//   res.status(200).send(`<h1>${books[0].title}</h1>`);
-// });
-
-// // Listen on pc port
-// const PORT = process.env.PORT || 3000;
-// app.listen(PORT, () => console.log(`Server running on PORT ${PORT}`));
+app.use(express.json());
 
 const server = new ApolloServer({
   typeDefs,
