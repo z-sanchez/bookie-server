@@ -1,11 +1,9 @@
-import products from "../products/products.json" with { type: "json" };
-import { getBooks } from "./getBooks.js";
+import { getBooks } from "../connectors/queries/books.js";
 
 export const bookResovler = {
   Query: {
-    books: () =>{
-      getBooks();
-      return products.books
+    books: () => {
+      return getBooks();
     },
   },
 };
