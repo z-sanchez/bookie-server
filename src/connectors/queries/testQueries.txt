@@ -1,0 +1,93 @@
+use Bookie_DB;
+
+
+create table Genres (
+BookId int unique not null auto_increment primary key,
+Fantasy boolean,
+Adventure boolean,
+Dystopian boolean,
+PoliticalFiction boolean,
+Fiction boolean,
+ComingOfAge boolean,
+SciFi boolean
+);
+
+create table Books (
+ID int unique not null primary key auto_increment,
+Author varchar(255),
+Title varchar(255),
+Description varchar(255),
+Price decimal(10,2),
+QuantityAvailable int,
+ImageUrl blob,
+foreign key (ID) references Genres(BookId)
+);
+
+
+insert into Genres
+(
+Fantasy,
+Adventure,
+Dystopian,
+PoliticalFiction,
+Fiction,
+ComingOfAge,
+SciFi 
+)
+values
+(
+1,
+1,
+0,
+0,
+0,
+0,
+0
+);
+
+insert into Books 
+(Author, Title, Description, Price, QuantityAvailable, ImageURL)
+values
+(
+"J.K. Rowling", 
+"Harry Potter and the Sorcerer's Stone", 
+"First book of the Harry Potter series", 
+15.99, 
+100, 
+"https://prodimage.images-bn.com/pimages/9780452284234_p0_v4_s192x300.jpg"
+)
+
+
+
+insert into Genres
+(
+Fantasy,
+Adventure,
+Dystopian,
+PoliticalFiction,
+Fiction,
+ComingOfAge,
+SciFi 
+)
+values
+(
+0,
+0,
+1,
+1,
+0,
+0,
+0
+);
+
+insert into Books 
+(Author, Title, Description, Price, QuantityAvailable, ImageURL)
+values
+(
+"George Orwell", 
+"1984", 
+"A dystopian novel exploring the dangers of totalitarianism and surveillance.", 
+12.49, 
+50, 
+"https://prodimage.images-bn.com/pimages/9780452284234_p0_v4_s192x300.jpg"
+)
