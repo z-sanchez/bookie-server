@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "tsc",
     "start": "npm run compile && node ./dist/server.js",
-    "dev": "nodemon src/server.ts",
+    "dev": "nodemon",
     "build": "tsc -p ."
   },
   "author": "",
@@ -20,7 +20,8 @@
     "express": "^4.17.1",
     "graphql": "^16.8.1",
     "mysql2": "^3.0.1",
-    "ts-node": "^10.9.1"
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.13",
@@ -29,7 +30,6 @@
     "@typescript-eslint/eslint-plugin": "^5.60.0",
     "@typescript-eslint/parser": "^5.60.0",
     "eslint": "^8.43.0",
-    "nodemon": "^2.0.7",
     "typescript": "^5.0.4"
   }
 }
