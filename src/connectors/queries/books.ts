@@ -4,7 +4,7 @@ import { dbConnection } from "../db.js";
 
 export const getBooks = async () => {
   try {
-    const [results, fields] = await dbConnection.query<RowDataPacket[]>(
+    const [results] = await dbConnection.query<RowDataPacket[]>(
       "SELECT * FROM BOOKS"
     );
 
