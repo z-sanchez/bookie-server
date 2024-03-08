@@ -6,7 +6,7 @@ import express from "express";
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import { typeDefs } from "./graphql/schema.js";
-import { bookResovler } from "./graphql/bookResolver.js";
+import { bookResovler } from "./graphql/resolvers/bookResolver.js";
 
 const app = express();
 

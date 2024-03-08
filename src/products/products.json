@@ -1,27 +1,7 @@
 {
   "books": [
     {
-      "id": "001",
-      "author": "J.K. Rowling",
-      "title": "Harry Potter and the Sorcerer's Stone",
-      "description": "The first book in the Harry Potter series, introducing the magical world of Hogwarts.",
-      "price": 15.99,
-      "quantityAvailable": 100,
-      "genres": ["Fantasy", "Adventure"],
-      "imageURL": "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B300%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&set=key%5Bresolve.format%5D,value%5Bwebp%5D&product=path%5B/pimages/9781338878929_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D"
-    },
-    {
-      "id": "002",
-      "author": "George Orwell",
-      "title": "1984",
-      "description": "A dystopian novel exploring the dangers of totalitarianism and surveillance.",
-      "price": 12.49,
-      "quantityAvailable": 50,
-      "genres": ["Dystopian", "Political Fiction"],
-      "imageURL": "https://prodimage.images-bn.com/pimages/9780452284234_p0_v4_s192x300.jpg"
-    },
-    {
-      "id": "003",
+      "id": 2,
       "author": "Harper Lee",
       "title": "To Kill a Mockingbird",
       "description": "A classic novel addressing racial injustice in the American South during the 1930s.",
@@ -31,7 +11,7 @@
       "imageURL": "https://prodimage.images-bn.com/pimages/9780060935467_p0_v13_s192x300.jpg"
     },
     {
-      "id": "004",
+      "id": 3,
       "author": "Frank Herbert",
       "title": "Dune",
       "description": "Set on the desert planet Arrakis, Dune is the story of Paul Atreides—who would become known as Muad'Dib—and of a great family's ambition to bring to fruition humankind's most ancient and unattainable dream.",
