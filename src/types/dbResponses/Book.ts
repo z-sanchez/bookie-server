@@ -1,7 +1,7 @@
 import { RowDataPacket } from "mysql2";
 
 export interface BookDBResponse extends RowDataPacket {
-  BookID: number;
+  BookID: string;
   Author: string;
   Title: string;
   Descrption: string;

@@ -11,7 +11,27 @@ export const typeDefs = `
     imageURL: String!
   }
 
+  input BookInput {
+    id: ID!,
+    title: String!,
+    author: String!,
+    description: String!,
+    price: Float!,
+    quantityAvailable: Int!,
+    imageURL: String!
+  }
+
+  input GenreInput {
+    genreId: ID!,
+    genreName: String!
+  }
+
+  type Mutation {
+    addBooks(books: [BookInput]): String,
+    addGenres(genres: [GenreInput]): String
+  }
+
   type Query {
-    books: [Book]
+    getBooks: [Book],
   }
 `;

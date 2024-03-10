@@ -7,6 +7,7 @@ import {
   GenreDBResponse,
 } from "../../types/dbResponses/Book.js";
 import { ERROR_CODES } from "../../types/Error.js";
+import { BookInput } from "../../types/graphql/BookInput.js";
 
 export class BookController {
   async getBooks() {
@@ -44,5 +45,11 @@ export class BookController {
       }
       return error;
     }
+  }
+
+  async storeBooks(books: BookInput[]): Promise<string> {
+    console.log("Got Books", { books });
+
+    return "Books stored in DB successfully";
   }
 }

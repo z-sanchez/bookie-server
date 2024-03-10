@@ -1,10 +1,13 @@
-export type Book = {
+export type BookInput = {
   id: string;
-  author: string;
   title: string;
+  author: string;
   description: string;
   price: number;
   quantityAvailable: number;
-  genres: string[];
   imageURL: string;
+};
+
+export type AddBooksInput = {
+  books: BookInput[];
 };
