@@ -1,8 +1,10 @@
+import { insertGenres } from "../../queries/genres.js";
 import { GenreInput } from "../../types/graphql/GenreInput.js";
+import { dbConnection } from "../../connectors/db.js";
 
 export class GenreController {
-  addGenres(genres: GenreInput[]) {
-    console.log({ genres });
+  async addGenres(genres: GenreInput[]) {
+    await dbConnection.query(insertGenres(genres));
     return "Genre add to DB successfully";
   }
 }

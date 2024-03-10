@@ -1,5 +1,5 @@
 export type GenreInput = {
-  genredId: string;
+  genreId: string;
   genreName: string;
 };
 
