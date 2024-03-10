@@ -1,3 +1,4 @@
+import { GraphQLError } from "graphql";
 import { dbConnection } from "../../connectors/db.js";
 import { getAllBooks, getBookGenre } from "../../queries/books.js";
 import { Book } from "../../types/Book.js";
@@ -5,6 +6,7 @@ import {
   BookDBResponse,
   GenreDBResponse,
 } from "../../types/dbResponses/Book.js";
+import { ERROR_CODES } from "../../types/Error.js";
 
 export class BookController {
   async getBooks() {
@@ -32,7 +34,15 @@ export class BookController {
 
       return mappedResults;
     } catch (error) {
-      console.log(JSON.stringify(error));
+      if (error.code === "ER_PARSE_ERROR") {
+        return new GraphQLError(error.sqlMessage, {
+          extensions: {
+            code: ERROR_CODES.FAILED_TO_GET_BOOKS,
+            sqlSnippet: error.sql,
+          },
+        });
+      }
+      return error;
     }
   }
 }
