@@ -1,6 +1,6 @@
 import { GraphQLError } from "graphql";
 import { dbConnection } from "../../connectors/db.js";
-import { getAllBooks, getBookGenre } from "../../queries/books.js";
+import { getAllBooks, getBookGenre, insertBooks } from "../../queries/books.js";
 import { Book } from "../../types/Book.js";
 import {
   BookDBResponse,
@@ -48,7 +48,7 @@ export class BookController {
   }
 
   async storeBooks(books: BookInput[]): Promise<string> {
-    console.log("Got Books", { books });
+    await dbConnection.query(insertBooks(books));
 
     return "Books stored in DB successfully";
   }

@@ -1,5 +1,3 @@
-export const getAllBooks = "SELECT * FROM BOOKS";
-
 export const insertGenres = (
   genres: { genreId: string; genreName: string }[]
 ) => {

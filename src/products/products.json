@@ -1,7 +1,7 @@
 {
   "books": [
     {
-      "id": 2,
+      "id": "2",
       "author": "Harper Lee",
       "title": "To Kill a Mockingbird",
       "description": "A classic novel addressing racial injustice in the American South during the 1930s.",
@@ -11,7 +11,7 @@
       "imageURL": "https://prodimage.images-bn.com/pimages/9780060935467_p0_v13_s192x300.jpg"
     },
     {
-      "id": 3,
+      "id": "3",
       "author": "Frank Herbert",
       "title": "Dune",
       "description": "Set on the desert planet Arrakis, Dune is the story of Paul Atreides—who would become known as Muad'Dib—and of a great family's ambition to bring to fruition humankind's most ancient and unattainable dream.",
