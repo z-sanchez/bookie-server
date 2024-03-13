@@ -7,7 +7,7 @@ import { GenreDBResponse } from "../../types/dbResponses/Genre.js";
 import { ERROR_CODES } from "../../types/Error.js";
 import { BookInput } from "../../types/graphql/BookInput.js";
 
-export class BookController {
+export class BookModel {
   async getBooks() {
     try {
       const [results] = await dbConnection.query<BookDBResponse[]>(getAllBooks);

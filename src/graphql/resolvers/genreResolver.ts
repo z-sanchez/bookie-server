@@ -1,7 +1,7 @@
 import { AddGenresInput } from "../../types/graphql/GenreInput.js";
-import { GenreController } from "../controllers/GenreController.js";
+import { GenreModel } from "../models/GenreModel.js";
 
-const Genre = new GenreController();
+const Genre = new GenreModel();
 
 export const genreResolver = {
   Query: {

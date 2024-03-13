@@ -1,17 +1,17 @@
 import { AddBooksInput } from "../../types/graphql/BookInput.js";
-import { BookController } from "../controllers/BookController.js";
+import { BookModel } from "../models/BookModel.js";
 
-const Books = new BookController();
+const Book = new BookModel();
 
 export const bookResovler = {
   Query: {
     getBooks: () => {
-      return Books.getBooks();
+      return Book.getBooks();
     },
   },
   Mutation: {
     addBooks: (_, input: AddBooksInput) => {
-      return Books.storeBooks(input.books);
+      return Book.storeBooks(input.books);
     },
   },
 };

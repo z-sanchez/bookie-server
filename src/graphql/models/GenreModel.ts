@@ -4,7 +4,7 @@ import { dbConnection } from "../../connectors/db.js";
 import { GenreDBResponse } from "../../types/dbResponses/Genre.js";
 import { Genre } from "../../types/Genre.js";
 
-export class GenreController {
+export class GenreModel {
   async getGenres(): Promise<Genre[]> {
     const [results] = await dbConnection.query<GenreDBResponse[]>(getAllGenres);
 
