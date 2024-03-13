@@ -5,6 +5,6 @@ import { dbConnection } from "../../connectors/db.js";
 export class GenreController {
   async addGenres(genres: GenreInput[]) {
     await dbConnection.query(insertGenres(genres));
-    return "Genre add to DB successfully";
+    return "Genres add to DB successfully";
   }
 }
