@@ -56,7 +56,6 @@ export class BookModel {
 
   async storeBooks(books: BookInput[]): Promise<string> {
     await dbConnection.query(insertBooks(books));
-
     return "Books stored in DB successfully";
   }
 

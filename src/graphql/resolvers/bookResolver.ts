@@ -8,7 +8,12 @@ const Book = new BookModel();
 
 export const bookResovler = {
   Query: {
-    getBooks: () => {
+    getBooks: (parent, args, context, info) => {
+      console.log({
+        info: info.fieldNodes[0].selectionSet.selections.some(
+          ({ name }) => name.value === "genres"
+        ),
+      });
       return Book.getBooks();
     },
   },
