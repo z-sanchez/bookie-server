@@ -1,3 +1,5 @@
+import { Genre } from "./Genre.js";
+
 export type Book = {
   id: string;
   author: string;
@@ -5,6 +7,6 @@ export type Book = {
   description: string;
   price: number;
   quantityAvailable: number;
-  genres: string[];
+  genres: Genre[];
   imageURL: string;
 };

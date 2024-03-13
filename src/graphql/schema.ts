@@ -1,5 +1,11 @@
 export const typeDefs = `
   #graphql
+
+  type Genre {
+    genreId: ID!,
+    genreName: String!
+  }
+
   type Book {
     id: ID!,
     title: String!,
@@ -7,7 +13,7 @@ export const typeDefs = `
     description: String!,
     price: Float!,
     quantityAvailable: Int!,
-    genres: [String]!,
+    genres: [Genre]!,
     imageURL: String!
   }
 

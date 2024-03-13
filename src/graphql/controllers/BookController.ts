@@ -28,7 +28,11 @@ export class BookController {
             price: result.Price,
             quantityAvailable: result.QuantityAvailable,
             imageURL: result.ImageUrl,
-            genres: [...genreResults.map((genre) => genre.GenreName)],
+            genres: [
+              ...genreResults.map((genre) => {
+                return { genreName: genre.GenreName, genreId: genre.GenreID };
+              }),
+            ],
           };
         })
       );
