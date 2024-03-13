@@ -9,7 +9,3 @@ export interface BookDBResponse extends RowDataPacket {
   QuantityAvailable: number;
   ImageUrl: string;
 }
-
-export interface GenreDBResponse extends RowDataPacket {
-  GenreName: string;
-}

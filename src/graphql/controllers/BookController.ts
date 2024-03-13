@@ -2,10 +2,8 @@ import { GraphQLError } from "graphql";
 import { dbConnection } from "../../connectors/db.js";
 import { getAllBooks, getBookGenre, insertBooks } from "../../queries/books.js";
 import { Book } from "../../types/Book.js";
-import {
-  BookDBResponse,
-  GenreDBResponse,
-} from "../../types/dbResponses/Book.js";
+import { BookDBResponse } from "../../types/dbResponses/Book.js";
+import { GenreDBResponse } from "../../types/dbResponses/Genre.js";
 import { ERROR_CODES } from "../../types/Error.js";
 import { BookInput } from "../../types/graphql/BookInput.js";
 

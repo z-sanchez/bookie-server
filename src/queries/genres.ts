@@ -1,3 +1,5 @@
+export const getAllGenres = "select * from Genres;";
+
 export const insertGenres = (
   genres: { genreId: string; genreName: string }[]
 ) => {
