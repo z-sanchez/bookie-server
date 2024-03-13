@@ -1,11 +1,16 @@
 import { GraphQLError } from "graphql";
 import { dbConnection } from "../../connectors/db.js";
-import { getAllBooks, getBookGenre, insertBooks } from "../../queries/books.js";
+import {
+  addGenresToBooks,
+  getAllBooks,
+  getBookGenre,
+  insertBooks,
+} from "../../queries/books.js";
 import { Book } from "../../types/Book.js";
 import { BookDBResponse } from "../../types/dbResponses/Book.js";
 import { GenreDBResponse } from "../../types/dbResponses/Genre.js";
 import { ERROR_CODES } from "../../types/Error.js";
-import { BookInput } from "../../types/graphql/BookInput.js";
+import { BookGenreInput, BookInput } from "../../types/graphql/BookInput.js";
 
 export class BookModel {
   async getBooks() {
@@ -53,5 +58,10 @@ export class BookModel {
     await dbConnection.query(insertBooks(books));
 
     return "Books stored in DB successfully";
+  }
+
+  async addGenreToBook(input: BookGenreInput[]): Promise<string> {
+    await dbConnection.query(addGenresToBooks(input));
+    return "Genres were added to Books in DB successfully";
   }
 }

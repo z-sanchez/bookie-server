@@ -1,4 +1,7 @@
-import { AddBooksInput } from "../../types/graphql/BookInput.js";
+import {
+  AddBooksInput,
+  BookGenreInput,
+} from "../../types/graphql/BookInput.js";
 import { BookModel } from "../models/BookModel.js";
 
 const Book = new BookModel();
@@ -12,6 +15,9 @@ export const bookResovler = {
   Mutation: {
     addBooks: (_, input: AddBooksInput) => {
       return Book.storeBooks(input.books);
+    },
+    addGenreToBook: (_, input: { data: BookGenreInput[] }) => {
+      return Book.addGenreToBook(input.data);
     },
   },
 };

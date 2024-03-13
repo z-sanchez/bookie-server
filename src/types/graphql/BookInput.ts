@@ -11,3 +11,8 @@ export type BookInput = {
 export type AddBooksInput = {
   books: BookInput[];
 };
+
+export type BookGenreInput = {
+  bookId: string;
+  genreId: string;
+};

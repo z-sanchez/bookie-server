@@ -27,6 +27,11 @@ export const typeDefs = `
     imageURL: String!
   }
 
+  input BookGenreInput {
+    bookId: ID!,
+    genreId: ID!
+  }
+
   input GenreInput {
     genreId: ID!,
     genreName: String!
@@ -34,7 +39,8 @@ export const typeDefs = `
 
   type Mutation {
     addBooks(books: [BookInput]): String,
-    addGenres(genres: [GenreInput]): String
+    addGenres(genres: [GenreInput]): String,
+    addGenreToBook(data: [BookGenreInput]): String,
   }
 
   type Query {

@@ -15,3 +15,13 @@ export const insertBooks = (books: BookInput[]) => {
     return `("${book.id}","${book.author}","${book.title}","${book.description}","${book.price}","${book.quantityAvailable}","${book.imageURL}")`;
   })}`;
 };
+
+export const addGenresToBooks = (
+  data: { bookId: string; genreId: string }[]
+) => {
+  return `insert into BookGenres (BookID, GenreID) values ${data.map(
+    (entry) => {
+      return `("${entry.bookId}","${entry.genreId}")`;
+    }
+  )}`;
+};
