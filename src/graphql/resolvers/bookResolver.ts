@@ -1,3 +1,4 @@
+import { Book } from "../../types/Book.js";
 import {
   AddBooksInput,
   BookGenreInput,
@@ -8,12 +9,7 @@ const Book = new BookModel();
 
 export const bookResovler = {
   Query: {
-    getBooks: (parent, args, context, info) => {
-      console.log({
-        info: info.fieldNodes[0].selectionSet.selections.some(
-          ({ name }) => name.value === "genres"
-        ),
-      });
+    getBooks: () => {
       return Book.getBooks();
     },
   },
@@ -26,9 +22,8 @@ export const bookResovler = {
     },
   },
   Book: {
-    getGenres: (input) => {
-      console.log({ input });
-      return input.genres;
+    getGenres: (input: Book) => {
+      return Book.getBookGenres(input.id);
     },
   },
 };
