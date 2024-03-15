@@ -21,9 +21,4 @@ export const bookResovler = {
       return Book.addGenreToBook(input.data);
     },
   },
-  Book: {
-    getGenres: (input: Book) => {
-      return Book.getBookGenres(input.id);
-    },
-  },
 };

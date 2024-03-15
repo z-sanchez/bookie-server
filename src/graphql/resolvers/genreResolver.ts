@@ -1,3 +1,4 @@
+import { Book } from "../../types/Book.js";
 import { AddGenresInput } from "../../types/graphql/GenreInput.js";
 import { GenreModel } from "../models/GenreModel.js";
 
@@ -12,6 +13,11 @@ export const genreResolver = {
   Mutation: {
     addGenres: (_, input: AddGenresInput) => {
       return Genre.addGenres(input.genres);
+    },
+  },
+  Book: {
+    getGenres: (input: Book) => {
+      return Genre.getBookGenres(input.id);
     },
   },
 };
