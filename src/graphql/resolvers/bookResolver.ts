@@ -25,4 +25,10 @@ export const bookResovler = {
       return Book.addGenreToBook(input.data);
     },
   },
+  Book: {
+    getGenres: (input) => {
+      console.log({ input });
+      return input.genres;
+    },
+  },
 };

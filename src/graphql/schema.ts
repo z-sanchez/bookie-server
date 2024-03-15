@@ -17,6 +17,17 @@ export const typeDefs = `
     imageURL: String!
   }
 
+  input BookInputType {
+    id: ID!,
+    title: String!,
+    author: String!,
+    description: String!,
+    price: Float!,
+    quantityAvailable: Int!,
+    genres: [BookGenreInput]!,
+    imageURL: String!
+  }
+
   input BookInput {
     id: ID!,
     title: String!,
@@ -45,6 +56,10 @@ export const typeDefs = `
 
   type Query {
     getBooks: [Book],
+    getGenres: [Genre]
+  }
+
+  type Book {
     getGenres: [Genre]
   }
 `;
