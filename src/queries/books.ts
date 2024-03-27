@@ -25,3 +25,7 @@ export const addGenresToBooks = (
     }
   )}`;
 };
+
+export const searchBooks = (term: string) => {
+  return `select * from Books WHERE Title LIKE '%${term}%'`;
+};
