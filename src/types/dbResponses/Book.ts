@@ -9,3 +9,7 @@ export interface BookDBResponse extends RowDataPacket {
   QuantityAvailable: number;
   ImageUrl: string;
 }
+
+export interface SearchBooksDBResponse extends RowDataPacket {
+  bookCount: number;
+}

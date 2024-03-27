@@ -7,3 +7,8 @@ export type Book = {
   quantityAvailable: number;
   imageURL: string;
 };
+
+export type SearchBooks = {
+  books: Book[];
+  moreResults: boolean;
+};

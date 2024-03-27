@@ -16,3 +16,9 @@ export type BookGenreInput = {
   bookId: string;
   genreId: string;
 };
+
+export type SearchBooksInput = {
+  term: string;
+  limit?: number;
+  startingIndex?: number;
+};

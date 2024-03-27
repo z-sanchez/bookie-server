@@ -16,6 +16,11 @@ export const typeDefs = `
     imageURL: String!
   }
 
+  type SearchBooks {
+    books: [Book],
+    moreResults: Boolean
+  }
+
   input BookInput {
     id: ID!,
     title: String!,
@@ -36,6 +41,12 @@ export const typeDefs = `
     genreName: String!
   }
 
+  input SearchBooksInput {
+    term: String!,
+    limit: Int,
+    startingIndex: Int
+  }
+
   type Mutation {
     addBooks(books: [BookInput]): String,
     addGenres(genres: [GenreInput]): String,
@@ -45,7 +56,7 @@ export const typeDefs = `
   type Query {
     getBooks: [Book],
     getGenres: [Genre]
-    searchBooks(term: String!): [Book]
+    searchBooks(data: SearchBooksInput): SearchBooks
   }
 
   type Book {

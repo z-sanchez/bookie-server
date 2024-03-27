@@ -3,13 +3,21 @@ import { dbConnection } from "../../connectors/db.js";
 import {
   addGenresToBooks,
   getAllBooks,
+  getBookCount,
   insertBooks,
   searchBooks,
 } from "../../queries/books.js";
-import { Book } from "../../types/Book.js";
-import { BookDBResponse } from "../../types/dbResponses/Book.js";
+import { Book, SearchBooks } from "../../types/Book.js";
+import {
+  BookDBResponse,
+  SearchBooksDBResponse,
+} from "../../types/dbResponses/Book.js";
 import { ERROR_CODES } from "../../types/Error.js";
-import { BookGenreInput, BookInput } from "../../types/graphql/BookInput.js";
+import {
+  BookGenreInput,
+  BookInput,
+  SearchBooksInput,
+} from "../../types/graphql/BookInput.js";
 
 export class BookModel {
   async getBooks(): Promise<Book[] | GraphQLError> {
@@ -50,23 +58,33 @@ export class BookModel {
     return "Genres were added to Books in DB successfully";
   }
 
-  async searchBooks(searchTerm: string): Promise<Book[] | GraphQLError> {
+  async searchBooks(
+    input: SearchBooksInput
+  ): Promise<SearchBooks | GraphQLError> {
     try {
+      const [bookCountResult] = await dbConnection.query<
+        SearchBooksDBResponse[]
+      >(getBookCount());
       const [results] = await dbConnection.query<BookDBResponse[]>(
-        searchBooks(searchTerm)
+        searchBooks(input.term)
       );
 
-      return results.map((result) => {
-        return {
-          id: result.BookID,
-          author: result.Author,
-          title: result.Title,
-          description: result.Description,
-          price: result.Price,
-          quantityAvailable: result.QuantityAvailable,
-          imageURL: result.ImageUrl,
-        };
-      });
+      console.log(bookCountResult.at(0).bookCount);
+
+      return {
+        books: results.map((result) => {
+          return {
+            id: result.BookID,
+            author: result.Author,
+            title: result.Title,
+            description: result.Description,
+            price: result.Price,
+            quantityAvailable: result.QuantityAvailable,
+            imageURL: result.ImageUrl,
+          };
+        }),
+        moreResults: false,
+      };
     } catch (error) {
       if (error.code === "ER_PARSE_ERROR") {
         return new GraphQLError(error.sqlMessage, {

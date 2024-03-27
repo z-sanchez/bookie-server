@@ -2,6 +2,7 @@ import { Book } from "../../types/Book.js";
 import {
   AddBooksInput,
   BookGenreInput,
+  SearchBooksInput,
 } from "../../types/graphql/BookInput.js";
 import { BookModel } from "../models/BookModel.js";
 
@@ -12,8 +13,8 @@ export const bookResovler = {
     getBooks: () => {
       return Book.getBooks();
     },
-    searchBooks: (_, input: { term: string }) => {
-      return Book.searchBooks(input.term);
+    searchBooks: (_, input: { data: SearchBooksInput }) => {
+      return Book.searchBooks(input.data);
     },
   },
   Mutation: {
