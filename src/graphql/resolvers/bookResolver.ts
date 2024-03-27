@@ -12,6 +12,9 @@ export const bookResovler = {
     getBooks: () => {
       return Book.getBooks();
     },
+    searchBooks: (_, input: { term: string }) => {
+      return Book.searchBooks(input.term);
+    },
   },
   Mutation: {
     addBooks: (_, input: AddBooksInput) => {

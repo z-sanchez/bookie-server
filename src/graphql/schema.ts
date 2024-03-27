@@ -45,6 +45,7 @@ export const typeDefs = `
   type Query {
     getBooks: [Book],
     getGenres: [Genre]
+    searchBooks(term: String!): [Book]
   }
 
   type Book {
