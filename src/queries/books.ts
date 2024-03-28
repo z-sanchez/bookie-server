@@ -1,4 +1,4 @@
-import { BookInput } from "../types/graphql/BookInput.js";
+import { BookInput, SearchBooksInput } from "../types/graphql/BookInput.js";
 
 export const getAllBooks = "SELECT * FROM BOOKS";
 
@@ -26,10 +26,16 @@ export const addGenresToBooks = (
   )}`;
 };
 
-export const searchBooks = (term: string) => {
-  return `select * from Books WHERE Title LIKE '%${term}%'`;
+export const searchBooks = ({
+  term,
+  limit,
+  startingIndex,
+}: SearchBooksInput) => {
+  return `select * from Books WHERE Title LIKE '%${term}%' AND BookID >= ${
+    startingIndex ? startingIndex : 0
+  } ${limit ? `limit ${limit}` : ""}`;
 };
 
-export const getBookCount = () => {
-  return `select count(BookID) as bookCount from Books`;
+export const getBookCount = (term: string) => {
+  return `select count(BookID) as bookCount from Books WHERE Title LIKE '%${term}%'`;
 };

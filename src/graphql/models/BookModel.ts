@@ -64,12 +64,17 @@ export class BookModel {
     try {
       const [bookCountResult] = await dbConnection.query<
         SearchBooksDBResponse[]
-      >(getBookCount());
+      >(getBookCount(input.term));
       const [results] = await dbConnection.query<BookDBResponse[]>(
-        searchBooks(input.term)
+        searchBooks(input)
       );
 
-      console.log(bookCountResult.at(0).bookCount);
+      const totalBookCount = bookCountResult.at(0).bookCount;
+      const offsetBookCount =
+        input.startingIndex === 0 || !input.startingIndex
+          ? 0
+          : input.startingIndex;
+      const moreResults = totalBookCount > results.length + offsetBookCount;
 
       return {
         books: results.map((result) => {
@@ -83,7 +88,7 @@ export class BookModel {
             imageURL: result.ImageUrl,
           };
         }),
-        moreResults: false,
+        moreResults,
       };
     } catch (error) {
       if (error.code === "ER_PARSE_ERROR") {
