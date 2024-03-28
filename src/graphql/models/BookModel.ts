@@ -18,6 +18,7 @@ import {
   BookInput,
   SearchBooksInput,
 } from "../../types/graphql/BookInput.js";
+import { searchHasMoreResults } from "../../helpers/books.js";
 
 export class BookModel {
   async getBooks(): Promise<Book[] | GraphQLError> {
@@ -70,11 +71,6 @@ export class BookModel {
       );
 
       const totalBookCount = bookCountResult.at(0).bookCount;
-      const offsetBookCount =
-        input.startingIndex === 0 || !input.startingIndex
-          ? 0
-          : input.startingIndex;
-      const moreResults = totalBookCount > results.length + offsetBookCount;
 
       return {
         books: results.map((result) => {
@@ -88,7 +84,11 @@ export class BookModel {
             imageURL: result.ImageUrl,
           };
         }),
-        moreResults,
+        moreResults: searchHasMoreResults({
+          resultCount: results.length,
+          startingIndex: input.startingIndex,
+          totalResultCount: totalBookCount,
+        }),
       };
     } catch (error) {
       if (error.code === "ER_PARSE_ERROR") {
