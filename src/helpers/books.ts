@@ -1,12 +1,12 @@
 export const searchHasMoreResults = ({
-  resultCount,
+  limitedResultCount,
   totalResultCount,
-  startingIndex,
+  offset,
 }: {
-  resultCount: number;
+  limitedResultCount: number;
   totalResultCount: number;
-  startingIndex?: number;
+  offset?: number;
 }) => {
-  const offsetCount = startingIndex === 0 || !startingIndex ? 0 : startingIndex;
-  return totalResultCount > resultCount + offsetCount;
+  const offsetCount = offset === 0 || !offset ? 0 : offset;
+  return totalResultCount > limitedResultCount + offsetCount;
 };

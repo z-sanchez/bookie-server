@@ -85,8 +85,8 @@ export class BookModel {
           };
         }),
         moreResults: searchHasMoreResults({
-          resultCount: results.length,
-          startingIndex: input.startingIndex,
+          limitedResultCount: results.length,
+          offset: input.startingIndex,
           totalResultCount: totalBookCount,
         }),
       };
