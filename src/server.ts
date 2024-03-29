@@ -5,9 +5,9 @@ import cors from "cors";
 import express from "express";
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
-import { typeDefs } from "./graphql/schema.ts";
-import { bookResovler } from "./graphql/resolvers/bookResolver.ts";
-import { genreResolver } from "./graphql/resolvers/genreResolver.ts";
+import { typeDefs } from "./graphql/schema.js";
+import { bookResovler } from "./graphql/resolvers/bookResolver.js";
+import { genreResolver } from "./graphql/resolvers/genreResolver.js";
 
 const app = express();
 

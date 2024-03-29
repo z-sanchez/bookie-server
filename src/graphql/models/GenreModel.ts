@@ -1,11 +1,11 @@
-import { getAllGenres, insertGenres } from "../../queries/genres.ts";
-import { GenreInput } from "../../types/graphql/GenreInput.ts";
-import { dbConnection } from "../../connectors/db.ts";
-import { GenreDBResponse } from "../../types/dbResponses/Genre.ts";
-import { Genre } from "../../types/Genre.ts";
-import { getBookGenre } from "../../queries/books.ts";
+import { getAllGenres, insertGenres } from "../../queries/genres.js";
+import { GenreInput } from "../../types/graphql/GenreInput.js";
+import { dbConnection } from "../../connectors/db.js";
+import { GenreDBResponse } from "../../types/dbResponses/Genre.js";
+import { Genre } from "../../types/Genre.js";
+import { getBookGenre } from "../../queries/books.js";
 import { GraphQLError } from "graphql";
-import { ERROR_CODES } from "../../types/Error.ts";
+import { ERROR_CODES } from "../../types/Error.js";
 
 export class GenreModel {
   async getGenres(): Promise<Genre[]> {

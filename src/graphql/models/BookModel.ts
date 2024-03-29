@@ -1,24 +1,24 @@
 import { GraphQLError } from "graphql";
-import { dbConnection } from "../../connectors/db.ts";
+import { dbConnection } from "../../connectors/db.js";
 import {
   addGenresToBooks,
   getAllBooks,
   getBookCount,
   insertBooks,
   searchBooks,
-} from "../../queries/books.ts";
-import { Book, SearchBooks } from "../../types/Book.ts";
+} from "../../queries/books.js";
+import { Book, SearchBooks } from "../../types/Book.js";
 import {
   BookDBResponse,
   SearchBooksDBResponse,
-} from "../../types/dbResponses/Book.ts";
-import { ERROR_CODES } from "../../types/Error.ts";
+} from "../../types/dbResponses/Book.js";
+import { ERROR_CODES } from "../../types/Error.js";
 import {
   BookGenreInput,
   BookInput,
   SearchBooksInput,
-} from "../../types/graphql/BookInput.ts";
-import { searchHasMoreResults } from "../../helpers/books.ts";
+} from "../../types/graphql/BookInput.js";
+import { searchHasMoreResults } from "../../helpers/books.js";
 
 export class BookModel {
   async getBooks(): Promise<Book[] | GraphQLError> {

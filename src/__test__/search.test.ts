@@ -1,4 +1,4 @@
-import { searchHasMoreResults } from "../helpers/books.ts";
+import { searchHasMoreResults } from "../helpers/books.js";
 
 describe("Search Detail Functions", () => {
   test("Initial Test", () => {
