@@ -4,6 +4,8 @@
     "moduleResolution": "NodeNext",
     "target": "es2020",
     "outDir": "dist",
-    "rootDirs": ["src"]
+    "rootDirs": ["src"],
+    "allowImportingTsExtensions": true,
+    "noEmit": true
   }
 }

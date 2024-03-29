@@ -1,6 +1,6 @@
-import { Book } from "../../types/Book.js";
-import { AddGenresInput } from "../../types/graphql/GenreInput.js";
-import { GenreModel } from "../models/GenreModel.js";
+import { Book } from "../../types/Book.ts";
+import { AddGenresInput } from "../../types/graphql/GenreInput.ts";
+import { GenreModel } from "../models/GenreModel.ts";
 
 const Genre = new GenreModel();
 

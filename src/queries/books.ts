@@ -1,4 +1,4 @@
-import { BookInput, SearchBooksInput } from "../types/graphql/BookInput.js";
+import { BookInput, SearchBooksInput } from "../types/graphql/BookInput.ts";
 
 export const getAllBooks = "SELECT * FROM BOOKS";
 

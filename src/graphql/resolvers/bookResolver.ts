@@ -1,10 +1,10 @@
-import { Book } from "../../types/Book.js";
+import { Book } from "../../types/Book.ts";
 import {
   AddBooksInput,
   BookGenreInput,
   SearchBooksInput,
-} from "../../types/graphql/BookInput.js";
-import { BookModel } from "../models/BookModel.js";
+} from "../../types/graphql/BookInput.ts";
+import { BookModel } from "../models/BookModel.ts";
 
 const Book = new BookModel();
 
