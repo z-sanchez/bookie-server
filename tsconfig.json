@@ -4,9 +4,7 @@
     "moduleResolution": "NodeNext",
     "target": "es2020",
     "outDir": "dist",
-    "rootDirs": ["src"],
-    "allowImportingTsExtensions": true,
-    "noEmit": true
+    "rootDirs": ["src"]
   },
-  "exclude": ["src/**/*.test.ts"]
+  "exclude": ["jest.config.ts"]
 }
