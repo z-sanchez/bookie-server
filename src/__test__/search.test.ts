@@ -1,4 +1,3 @@
-import { BookModel } from "../graphql/models/BookModel.js";
 import { searchHasMoreResults } from "../helpers/books.js";
 
 describe("Search Detail Functions", () => {
@@ -20,8 +19,6 @@ describe("Search Detail Functions", () => {
     const totalResultCount = 8;
     const limitedResultCount = 5;
     const offset = 15;
-
-    // const test = new BookModel();
 
     const hasMoreResults = searchHasMoreResults({
       limitedResultCount,

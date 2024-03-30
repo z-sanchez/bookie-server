@@ -1,6 +1,3 @@
-import dotenv from "dotenv";
-// ALLOWS ENVIRONMENT VARIABLES TO BE SET ON PROCESS.ENV SHOULD BE AT TOP
-dotenv.config();
 import cors from "cors";
 import express from "express";
 import { ApolloServer } from "@apollo/server";
