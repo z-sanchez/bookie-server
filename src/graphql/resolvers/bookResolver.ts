@@ -16,6 +16,9 @@ export const bookResovler = {
     searchBooks: (_, input: { data: SearchBooksInput }) => {
       return Book.searchBooks(input.data);
     },
+    exportBooksToJSON: () => {
+      return Book.exportBooksToJSON();
+    },
   },
   Mutation: {
     addBooks: (_, input: AddBooksInput) => {

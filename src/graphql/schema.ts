@@ -56,7 +56,9 @@ export const typeDefs = `
   type Query {
     getBooks: [Book],
     getGenres: [Genre]
-    searchBooks(data: SearchBooksInput): SearchBooks
+    searchBooks(data: SearchBooksInput): SearchBooks,
+    exportBooksToJSON: Boolean,
+
   }
 
   type Book {

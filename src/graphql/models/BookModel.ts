@@ -19,6 +19,9 @@ import {
   SearchBooksInput,
 } from "../../types/graphql/BookInput.js";
 import { searchHasMoreResults } from "../../helpers/books.js";
+import fs from "fs";
+import { GenreModel } from "./GenreModel.js";
+import { EXPORTED_BOOKS_FILENAME } from "../../utils/constants.js";
 
 export class BookModel {
   async getBooks(): Promise<Book[] | GraphQLError> {
@@ -100,6 +103,31 @@ export class BookModel {
         });
       }
       return error;
+    }
+  }
+
+  async exportBooksToJSON(): Promise<boolean> {
+    const genreModel = new GenreModel();
+    const books = (await this.getBooks()) as Book[];
+    const booksWithGenreInfo = await Promise.all(
+      books.map(async (book) => {
+        return {
+          ...book,
+          genres: await genreModel.getBookGenres(book.id),
+        };
+      })
+    );
+
+    const filePath = EXPORTED_BOOKS_FILENAME;
+    const jsonData = JSON.stringify(booksWithGenreInfo);
+
+    try {
+      fs.writeFileSync(filePath, jsonData);
+      console.log("JSON data saved to file successfully.");
+      return true;
+    } catch (error) {
+      console.error("Error writing JSON data to file:", error);
+      return false;
     }
   }
 }

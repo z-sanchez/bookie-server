@@ -5,3 +5,4 @@ coverage
 *.sql
 .vscode
 .DS_Store
+export_books.json
