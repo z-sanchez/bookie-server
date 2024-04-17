@@ -28,7 +28,8 @@ export const typeDefs = `
     description: String!,
     price: Float!,
     quantityAvailable: Int!,
-    imageURL: String!
+    imageURL: String!,
+    genres: [String],
   }
 
   input BookGenreInput {

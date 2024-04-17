@@ -9,3 +9,9 @@ export const insertGenres = (
     }
   )}`;
 };
+
+export const selectGenreByName = (genreName: string) => {
+  const normalizedGenreName = genreName.toLowerCase().replace(/ /g, "");
+
+  return `SELECT * FROM Genres WHERE REPLACE(GenreName, ' ', '') = ${normalizedGenreName} LIMIT 1`;
+};

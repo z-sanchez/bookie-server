@@ -6,6 +6,7 @@ export type BookInput = {
   price: number;
   quantityAvailable: number;
   imageURL: string;
+  genres?: string[];
 };
 
 export type AddBooksInput = {

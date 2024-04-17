@@ -53,6 +53,18 @@ export class BookModel {
   }
 
   async storeBooks(books: BookInput[]): Promise<string> {
+    //take book input with optional genre array (only name)
+    //iterate through genre array
+    //if no match for genre name (even in lowercase and no spacing), add genre using model
+    //add GenreToBook using this model
+    //add books as usual
+    books.forEach((book) => {
+      if (book.genres) {
+        book.genres.forEach((genre) => {
+          const genreInDB = false;
+        });
+      }
+    });
     await dbConnection.query(insertBooks(books));
     return "Books stored in DB successfully";
   }
