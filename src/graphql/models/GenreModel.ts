@@ -24,6 +24,8 @@ export class GenreModel {
     return "Genres add to DB successfully";
   }
 
+  //addGenreByName no ID, auto assign the ID (how can we conform to the foreign key and just use SQL)
+
   async getBookGenres(bookId: string): Promise<Genre[] | GraphQLError> {
     try {
       const [genreResults] = await dbConnection.query<GenreDBResponse[]>(

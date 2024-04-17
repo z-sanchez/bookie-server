@@ -54,6 +54,7 @@ export class BookModel {
 
   async storeBooks(books: BookInput[]): Promise<string> {
     //take book input with optional genre array (only name)
+    //auto assign bookIDs
     //iterate through genre array
     //if no match for genre name (even in lowercase and no spacing), add genre using model
     //add GenreToBook using this model
