@@ -71,6 +71,13 @@ export class BookModel {
     });
     // await dbConnection.query(insertBooks(books));
     return "Books stored in DB successfully";
+    //dont forget to adjust the apis for Genres, DB changes were made
+
+    //will need this query later
+    // -- INSERT INTO Genres (GenreName) VALUES ( "Children's");
+    // -- SELECT *
+    // -- FROM Genres
+    // -- WHERE GenreID = (SELECT LAST_INSERT_ID());
   }
 
   async addGenreToBook(input: BookGenreInput[]): Promise<string> {
