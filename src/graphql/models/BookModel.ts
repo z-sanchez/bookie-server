@@ -59,14 +59,17 @@ export class BookModel {
     //if no match for genre name (even in lowercase and no spacing), add genre using model
     //add GenreToBook using this model
     //add books as usual
+    const Genres = new GenreModel();
+
     books.forEach((book) => {
       if (book.genres) {
-        book.genres.forEach((genre) => {
-          const genreInDB = false;
+        book.genres.forEach(async (genre) => {
+          const genreInDB = await Genres.doesGenreExist(genre);
+          console.log({ genreInDB, genre });
         });
       }
     });
-    await dbConnection.query(insertBooks(books));
+    // await dbConnection.query(insertBooks(books));
     return "Books stored in DB successfully";
   }
 

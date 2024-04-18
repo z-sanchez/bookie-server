@@ -10,8 +10,8 @@ export const insertGenres = (
   )}`;
 };
 
-export const selectGenreByName = (genreName: string) => {
+export const doesGenreExist = (genreName: string) => {
   const normalizedGenreName = genreName.toLowerCase().replace(/ /g, "");
 
-  return `SELECT * FROM Genres WHERE REPLACE(GenreName, ' ', '') = ${normalizedGenreName} LIMIT 1`;
+  return `SELECT Case when exists (select 1 from Genres where REPLACE(GenreName, ' ', '') = "${normalizedGenreName}") then TRUE else FALSE END AS value_exists;`;
 };

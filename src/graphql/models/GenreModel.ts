@@ -1,7 +1,14 @@
-import { getAllGenres, insertGenres } from "../../queries/genres.js";
+import {
+  doesGenreExist,
+  getAllGenres,
+  insertGenres,
+} from "../../queries/genres.js";
 import { GenreInput } from "../../types/graphql/GenreInput.js";
 import { dbConnection } from "../../connectors/db.js";
-import { GenreDBResponse } from "../../types/dbResponses/Genre.js";
+import {
+  GenreDBResponse,
+  GenreExistDBResponse,
+} from "../../types/dbResponses/Genre.js";
 import { Genre } from "../../types/Genre.js";
 import { getBookGenre } from "../../queries/books.js";
 import { GraphQLError } from "graphql";
@@ -24,8 +31,6 @@ export class GenreModel {
     return "Genres add to DB successfully";
   }
 
-  //addGenreByName no ID, auto assign the ID (how can we conform to the foreign key and just use SQL)
-
   async getBookGenres(bookId: string): Promise<Genre[] | GraphQLError> {
     try {
       const [genreResults] = await dbConnection.query<GenreDBResponse[]>(
@@ -45,6 +50,18 @@ export class GenreModel {
         });
       }
       return error;
+    }
+  }
+
+  async doesGenreExist(genreName: string): Promise<boolean> {
+    try {
+      const [result] = await dbConnection.query<GenreExistDBResponse[]>(
+        doesGenreExist(genreName)
+      );
+
+      return Boolean(result[0].value_exists);
+    } catch {
+      return false;
     }
   }
 }

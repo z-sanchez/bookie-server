@@ -1,5 +1,4 @@
 export type BookInput = {
-  id: string;
   title: string;
   author: string;
   description: string;

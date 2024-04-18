@@ -12,7 +12,7 @@ export const insertBooks = (books: BookInput[]) => {
   return `insert into Books 
   (BookID, Author, Title, Description, Price, QuantityAvailable, ImageURL)
   values ${books.map((book) => {
-    return `("${book.id}","${book.author}","${book.title}","${book.description}","${book.price}","${book.quantityAvailable}","${book.imageURL}")`;
+    return `("${book.author}","${book.title}","${book.description}","${book.price}","${book.quantityAvailable}","${book.imageURL}")`;
   })}`;
 };
 

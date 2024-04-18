@@ -22,7 +22,6 @@ export const typeDefs = `
   }
 
   input BookInput {
-    id: ID!,
     title: String!,
     author: String!,
     description: String!,
