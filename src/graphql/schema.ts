@@ -36,11 +36,6 @@ export const typeDefs = `
     genreId: ID!
   }
 
-  input GenreInput {
-    genreId: ID!,
-    genreName: String!
-  }
-
   input SearchBooksInput {
     term: String!,
     limit: Int,
@@ -49,7 +44,7 @@ export const typeDefs = `
 
   type Mutation {
     addBooks(books: [BookInput]): String,
-    addGenres(genres: [GenreInput]): String,
+    addGenres(genres: [String]): String,
     addGenreToBook(data: [BookGenreInput]): String,
   }
 

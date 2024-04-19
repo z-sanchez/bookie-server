@@ -2,6 +2,7 @@ import {
   doesGenreExist,
   getAllGenres,
   insertGenres,
+  getLastInsertedGenre as lastInsertedGenreQuery,
 } from "../../queries/genres.js";
 import { GenreInput } from "../../types/graphql/GenreInput.js";
 import { dbConnection } from "../../connectors/db.js";
@@ -26,9 +27,28 @@ export class GenreModel {
     });
   }
 
-  async addGenres(genres: GenreInput[]) {
-    await dbConnection.query(insertGenres(genres));
+  async addGenres(genres: string[]) {
+    const genresToAdd = [];
+
+    for (const genre of genres) {
+      const doesGenreExist = await this.doesGenreExist(genre);
+      if (!doesGenreExist) {
+        genresToAdd.push(genre);
+      }
+    }
+
+    if (genresToAdd.length) {
+      await dbConnection.query(insertGenres(genresToAdd));
+    }
     return "Genres add to DB successfully";
+  }
+
+  async getLastInsertedGenre() {
+    const [genreResult] = await dbConnection.query<GenreDBResponse[]>(
+      lastInsertedGenreQuery()
+    );
+
+    return genreResult.at(0);
   }
 
   async getBookGenres(bookId: string): Promise<Genre[] | GraphQLError> {

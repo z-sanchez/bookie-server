@@ -10,10 +10,14 @@ export const getBookGenre = (bookId: string) => {
 
 export const insertBooks = (books: BookInput[]) => {
   return `insert into Books 
-  (BookID, Author, Title, Description, Price, QuantityAvailable, ImageURL)
+  (Author, Title, Description, Price, QuantityAvailable, ImageURL)
   values ${books.map((book) => {
     return `("${book.author}","${book.title}","${book.description}","${book.price}","${book.quantityAvailable}","${book.imageURL}")`;
-  })}`;
+  })};`;
+};
+
+export const getLastBookInserted = () => {
+  return "SELECT * FROM Books WHERE BookID = (SELECT LAST_INSERT_ID());";
 };
 
 export const addGenresToBooks = (
