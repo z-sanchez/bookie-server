@@ -23,7 +23,6 @@ import { searchHasMoreResults } from "../../helpers/books.js";
 import fs from "fs";
 import { GenreModel } from "./GenreModel.js";
 import { EXPORTED_BOOKS_FILENAME } from "../../utils/constants.js";
-import { GenreDBResponse } from "../../types/dbResponses/Genre.js";
 
 export class BookModel {
   async getBooks(): Promise<Book[] | GraphQLError> {
@@ -56,53 +55,38 @@ export class BookModel {
 
   async storeBooks(books: BookInput[]): Promise<string> {
     try {
-      //take book input with optional genre array (only name)
-      //auto assign bookIDs
-      //iterate through genre array
-      //if no match for genre name (even in lowercase and no spacing), add genre using model
-      //add GenreToBook using this model
-      //add books as usual
       const Genres = new GenreModel();
 
-      books.forEach(async (book) => {
-        //add and return book from DB
-        //store bookID
+      for (const book of books) {
         await dbConnection.query(insertBooks([book]));
         const [bookResult] = await dbConnection.query<BookDBResponse[]>(
           getLastBookInserted()
         );
 
-        const bookID = bookResult.at(0);
+        const bookId = bookResult.at(0).BookID;
 
         if (book.genres) {
-          book.genres.forEach(async (genre) => {
+          for (const genre of book.genres) {
             const doesGenreExist = await Genres.doesGenreExist(genre);
-            let genreID = null;
+            let genreId = null;
 
             if (!doesGenreExist) {
-              Genres.addGenres([genre]);
+              await Genres.addGenres([genre]);
               const insertedGenre = await Genres.getLastInsertedGenre();
-              genreID = insertedGenre.GenreID;
+              genreId = insertedGenre.GenreID;
+            } else {
+              const genreRecord = await Genres.getGenreByName(genre);
+              genreId = genreRecord.GenreID;
             }
-            //if genreDoesNotExist, add and return ID
-            //else getGenreId
-            //add bookID and GenreID to BookGenre
-            console.log({ doesGenreExist, genre });
-          });
+
+            await this.addGenreToBook([{ bookId, genreId }]);
+          }
         }
-      });
-      // await dbConnection.query(insertBooks(books));
+      }
       return "Books stored in DB successfully";
     } catch (error) {
       return error;
     }
-    //dont forget to adjust the apis for Genres, DB changes were made
-
-    //will need this query later
-    // -- INSERT INTO Genres (GenreName) VALUES ( "Children's");
-    // -- SELECT *
-    // -- FROM Genres
-    // -- WHERE GenreID = (SELECT LAST_INSERT_ID());
   }
 
   async addGenreToBook(input: BookGenreInput[]): Promise<string> {

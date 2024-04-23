@@ -15,3 +15,9 @@ export const doesGenreExist = (genreName: string) => {
 export const getLastInsertedGenre = () => {
   return "SELECT * FROM Genres WHERE GenreID = (SELECT LAST_INSERT_ID());";
 };
+
+export const getGenreByName = (genreName: string) => {
+  const normalizedGenreName = genreName.toLowerCase().replace(/ /g, "");
+
+  return `SELECT * FROM Genres WHERE REPLACE(GenreName, ' ', '') = "${normalizedGenreName}";`;
+};

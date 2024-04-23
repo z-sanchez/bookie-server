@@ -1,10 +1,10 @@
 import {
   doesGenreExist,
   getAllGenres,
+  getGenreByName,
   insertGenres,
   getLastInsertedGenre as lastInsertedGenreQuery,
 } from "../../queries/genres.js";
-import { GenreInput } from "../../types/graphql/GenreInput.js";
 import { dbConnection } from "../../connectors/db.js";
 import {
   GenreDBResponse,
@@ -25,6 +25,14 @@ export class GenreModel {
         genreName: genre.GenreName,
       };
     });
+  }
+
+  async getGenreByName(genreName: string) {
+    const [genreResult] = await dbConnection.query<GenreDBResponse[]>(
+      getGenreByName(genreName)
+    );
+
+    return genreResult.at(0);
   }
 
   async addGenres(genres: string[]) {
