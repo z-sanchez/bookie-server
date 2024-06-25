@@ -2,6 +2,7 @@ node_modules
 dist
 coverage
 .env
+.env.*
 *.sql
 .vscode
 .DS_Store
