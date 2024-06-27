@@ -1,6 +1,6 @@
 import { BookInput, SearchBooksInput } from "../types/graphql/BookInput.js";
 
-export const getAllBooks = "SELECT * FROM BOOKS";
+export const getAllBooks = "SELECT * FROM Books";
 
 export const getBookGenre = (bookId: string) => {
   return `SELECT * from BookGenres JOIN Genres
