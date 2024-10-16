@@ -41,4 +41,4 @@ jobs:
           username: zsanch
           key: ${{ secrets.DO_SSH_KEY }}
           script: |
-            echo ${{ secrets.USERPWD }} | sudo pm2 restart server
+            echo ${{ secrets.USERPWD }} | sudo -S pm2 restart server
