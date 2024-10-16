@@ -21,10 +21,6 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Create .env file
-        run: |
-          echo "VITE_GRAPHQL_API=${{ secrets.VITE_GRAPHQL_API }}" >> .env
-
       - name: Build React App
         run: npm run build
 
@@ -33,7 +29,7 @@ jobs:
         with:
           host: ${{ secrets.DROPLET_IP }}
           username: zsanch
-          key: "hehereherder"
+          key: ${{ secrets.DO_SSH_KEY }}
           source: "./dist/*"
           target: "/home/zsanch/bookie-server/dist"
           strip_components: 1
@@ -43,6 +39,6 @@ jobs:
         with:
           host: ${{ secrets.DROPLET_IP }}
           username: zsanch
-          key: "hehereherder"
+          key: ${{ secrets.DO_SSH_KEY }}
           script: |
             sudo pm2 restart server
