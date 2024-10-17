@@ -116,8 +116,7 @@ export class BookModel {
             description: result.Description,
             price: result.Price,
             quantityAvailable: result.QuantityAvailable,
-            imageURL:
-              "https://dynl.mktgcdn.com/p/QvyqaFRBImZYtfiRK0H4MWood5vuKFeCfBTXpmHRS5k/586x450.jpg",
+            imageURL: result.ImageUrl,
           };
         }),
         moreResults: searchHasMoreResults({
